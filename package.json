@@ -1,18 +1,22 @@
 {
   "name": "chrome_extension_maker_tools",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
-  "main":"dist/index.js",
-  "types":"dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.js",
   "bin": {
-    "ext-patch": "dist/scripts/patch.js",
-    "ext-minor": "dist/scripts/minor.js",
-    "ext-major": "dist/scripts/major.js",
-    "ext-release": "dist/scripts/release.js"
+    "ext-manifest": "dist/scripts/version/manifest.js",
+    "ext-patch": "dist/scripts/version/patch.js",
+    "ext-minor": "dist/scripts/version/minor.js",
+    "ext-major": "dist/scripts/version/major.js",
+    "ext-release": "dist/scripts/version/release.js",
+    "ext-zip": "dist/scripts/option/zip.js",
+    "ext-icon": "dist/scripts/option/makeicon.js"
   },
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "archiver": "^5.3.0",
     "fs": "^0.0.1-security",
     "typescript": "^4.5.5"
   },

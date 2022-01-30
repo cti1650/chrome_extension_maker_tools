@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { Manifest } = require("../class");
+import { Manifest } from "../../class";
 const { update, save } = Manifest();
 update("major");
 save();
