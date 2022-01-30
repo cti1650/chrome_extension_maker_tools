@@ -1,16 +1,16 @@
 {
   "name": "chrome_extension_maker_tools",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": true,
   "license": "MIT",
   "bin": {
-    "ext-patch": "src/scripts/patch.js",
-    "ext-minor": "src/scripts/minor.js",
-    "ext-major": "src/scripts/major.js",
-    "ext-release": "src/scripts/release.js"
+    "ext-patch": "dist/scripts/patch.js",
+    "ext-minor": "dist/scripts/minor.js",
+    "ext-major": "dist/scripts/major.js",
+    "ext-release": "dist/scripts/release.js"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
