@@ -1,7 +1,6 @@
 import { MakeExtentionImageType, ManifestType } from "./types";
 
 export const Manifest:ManifestType = (file = "extensions/manifest.json") => {
-  const option = require("./extconfig.json");
   const fs = require("fs");
   const getJson = () => {
     const jsonObject = JSON.parse(fs.readFileSync(file, "utf8"));

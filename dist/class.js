@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MakeExtentionImage = exports.Manifest = void 0;
 const Manifest = (file = "extensions/manifest.json") => {
-    const option = require("./extconfig.json");
     const fs = require("fs");
     const getJson = () => {
         const jsonObject = JSON.parse(fs.readFileSync(file, "utf8"));
