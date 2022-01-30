@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MakeExtentionImage = exports.Manifest = void 0;
-const Manifest = (file) => {
+const Manifest = (file = "extensions/manifest.json") => {
     const option = require("./extconfig.json");
-    file = file || option?.manifestPath || "extensions/manifest.json";
     const fs = require("fs");
     const getJson = () => {
         const jsonObject = JSON.parse(fs.readFileSync(file, "utf8"));
