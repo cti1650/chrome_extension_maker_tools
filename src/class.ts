@@ -1,4 +1,6 @@
-export const Manifest = (file = "extensions/manifest.json") => {
+import { MakeExtentionImageType, ManifestType } from "./types";
+
+export const Manifest:ManifestType = (file = "extensions/manifest.json") => {
   const fs = require("fs");
   const getJson = () => {
     const jsonObject = JSON.parse(fs.readFileSync(file, "utf8"));
@@ -124,7 +126,7 @@ export const Manifest = (file = "extensions/manifest.json") => {
   return { getJson, setJson, origin, manifest, update, save, file };
 };
 
-export const MakeExtentionImage = async (
+export const MakeExtentionImage: MakeExtentionImageType = async (
   file = "scripts/icon.png",
   option = {}
 ) => {

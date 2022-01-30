@@ -5,19 +5,13 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": true,
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cti1650/chrome_extension_maker_tools.git"
-  },
-  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cti1650/chrome_extension_maker_tools/issues"
+  "bin": {
+    "ext-patch": "src/scripts/patch.js",
+    "ext-minor": "src/scripts/minor.js",
+    "ext-major": "src/scripts/major.js",
+    "ext-release": "src/scripts/release.js"
   },
-  "homepage": "https://github.com/cti1650/chrome_extension_maker_tools#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
     "typescript": "^4.5.5"
