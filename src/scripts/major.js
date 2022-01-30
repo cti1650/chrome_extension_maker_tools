@@ -1,7 +1,4 @@
-(async () => {
-    const { Manifest } = require('./../class');
-    const { update, save } = Manifest();
-    update('major');
-    save();
-  })();
-  
+import { Manifest } from "./../class";
+const { update, save } = Manifest();
+update("major");
+save();
