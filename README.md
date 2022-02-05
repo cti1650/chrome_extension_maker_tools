@@ -2,6 +2,12 @@
 
 ## 使用方法
 
+extensions ディレクトリ配下のChrome拡張機能用ファイルに対して以下の機能が利用できます！
+
+    - ディレクトリ直下のManifest.jsonを参照し、バージョンアップ作業をコマンドで実行
+    - 拡張機能ファイルのzip圧縮
+    - アイコンの自動リサイズ機能（ファイル名： extensions/icons/icon.png を準備要！ ）
+
 - インストール
     ```
     yarn add https://github.com/cti1650/chrome_extension_maker_tools
