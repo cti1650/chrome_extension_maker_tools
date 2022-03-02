@@ -2,7 +2,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_1 = require("../../class");
-(0, class_1.MakeExtentionImage)("extensions/icons/icon.png").then(({ resizeImages }) => {
+(0, class_1.MakeExtentionImage)("extensions/images/image.png").then(({ resizeImages }) => {
     const typeList = ["screenshot", "screenshot_big"];
     resizeImages({
         name: "extensions/images/image",

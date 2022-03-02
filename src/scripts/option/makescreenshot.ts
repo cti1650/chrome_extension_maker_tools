@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { MakeExtentionImage } from "../../class";
-MakeExtentionImage("extensions/icons/icon.png").then(({ resizeImages }) => {
+MakeExtentionImage("extensions/images/image.png").then(({ resizeImages }) => {
   const typeList = ["screenshot", "screenshot_big"];
   resizeImages({
     name: "extensions/images/image",
