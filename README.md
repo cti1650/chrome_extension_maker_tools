@@ -60,6 +60,11 @@ extensions ディレクトリ配下のChrome拡張機能用ファイルに対し
         yarn ext-icon-transparent
         ```
 
+    - スクリーンショット 画像サイズ変更
+        ```
+        yarn ext-screenshot
+        ```
+
     - 拡張機能 ZIP圧縮
         ```
         yarn ext-zip
