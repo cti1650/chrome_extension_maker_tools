@@ -14,7 +14,7 @@ output.on("close", function () {
   );
 });
 
-archive.on("error", function (err) {
+archive.on("error", function (err: any) {
   throw err;
 });
 archive.directory("extensions", zip_name);

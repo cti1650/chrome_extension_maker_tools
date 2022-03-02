@@ -226,6 +226,7 @@ const MakeExtentionImage = async (file = "scripts/icon.png", option = {}) => {
         const defaultOption = {
             trim: true,
             square: true,
+            transparent: false,
             extend: 0.05,
             size: 128,
             name: "scripts/icon",
@@ -275,12 +276,14 @@ const MakeExtentionImage = async (file = "scripts/icon.png", option = {}) => {
         iconImage.raw().toBuffer((err, data, info) => {
             const length = data.length;
             const min = 0.7;
-            for (let i = 3; i < length; i += 4)
-                if (data[i - 1] >= Math.floor(data[2] * min) &&
-                    data[i - 2] >= Math.floor(data[1] * min) &&
-                    data[i - 3] >= Math.floor(data[0] * min)) {
-                    data[i] = 0 * 255;
-                }
+            if (baseOption.transparent) {
+                for (let i = 3; i < length; i += 4)
+                    if (data[i - 1] >= Math.floor(data[2] * min) &&
+                        data[i - 2] >= Math.floor(data[1] * min) &&
+                        data[i - 3] >= Math.floor(data[0] * min)) {
+                        data[i] = 0 * 255;
+                    }
+            }
             if (baseOption.size > 0) {
                 sharp(data, {
                     raw: { width: info.width, height: info.height, channels: 4 },

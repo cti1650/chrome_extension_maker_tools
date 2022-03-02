@@ -50,9 +50,14 @@ extensions ディレクトリ配下のChrome拡張機能用ファイルに対し
 
 - オプションツール
 
-    - ICON 透過処理＋圧縮
+    - ICON 画像サイズ変更
         ```
         yarn ext-icon
+        ```
+
+    - ICON 透過処理＋画像サイズ変更
+        ```
+        yarn ext-icon-transparent
         ```
 
     - 拡張機能 ZIP圧縮

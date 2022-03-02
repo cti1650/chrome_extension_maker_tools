@@ -1,6 +1,6 @@
 {
   "name": "chrome_extension_maker_tools",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.js",
@@ -11,7 +11,8 @@
     "ext-major": "dist/scripts/version/major.js",
     "ext-release": "dist/scripts/version/release.js",
     "ext-zip": "dist/scripts/option/zip.js",
-    "ext-icon": "dist/scripts/option/makeicon.js"
+    "ext-icon": "dist/scripts/option/makeicon.js",
+    "ext-icon-transparent": "dist/scripts/option/makeicon_transparent.js"
   },
   "private": true,
   "license": "MIT",

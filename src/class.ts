@@ -1,12 +1,12 @@
 import { MakeExtentionImageType, ManifestType } from "./types";
 
-export const Manifest:ManifestType = (file = "extensions/manifest.json") => {
+export const Manifest: ManifestType = (file = "extensions/manifest.json") => {
   const fs = require("fs");
   const getJson = () => {
     const jsonObject = JSON.parse(fs.readFileSync(file, "utf8"));
     return { ...jsonObject };
   };
-  const setJson = (output) => {
+  const setJson = (output:any) => {
     fs.writeFileSync(file, JSON.stringify(output, null, "  "));
     manifest = { ...output };
   };
@@ -142,16 +142,24 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
   const out = (file = "scripts/icon_out.png") => {
     return image
       .toFile(file)
-      .then((info) => {
+      .then((info: any) => {
         console.log(info);
         return info;
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
         return error;
       });
   };
-  const resizeImages = (option) => {
+  type ResizeImagesOption = {
+    background: string;
+    name: string;
+    width?: number;
+    height?: number;
+    type?: string;
+    typeList: string[];
+  };
+  const resizeImages = (option: ResizeImagesOption) => {
     const defaultOption = {
       background: "#ffffff",
       name: "scripts/image",
@@ -163,7 +171,18 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
     });
   };
 
-  const createIcons = (option) => {
+  type CreateIconsOption = {
+    background?: string;
+    name?: string;
+    trim?: boolean;
+    square?: boolean;
+    transparent?: boolean;
+    extend?: number;
+    size?: number;
+    sizeList?: number[];
+  };
+
+  const createIcons = (option: CreateIconsOption) => {
     const defaultOption = {
       background: "#ffffff",
       name: "scripts/icon",
@@ -175,7 +194,15 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
     });
   };
 
-  const resizeImage = (option = {}) => {
+  type ResizeImageOption = {
+    width?: number;
+    height?: number;
+    background?: string;
+    name?: string;
+    type?: string;
+  };
+
+  const resizeImage = (option: ResizeImageOption = {}) => {
     const outputImage = image.clone();
     const defaultOption = {
       width: 1280,
@@ -216,20 +243,30 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
         background: baseOption.background,
       })
       .toFile(`${baseOption.name}_${baseOption.width}x${baseOption.height}.png`)
-      .then((info) => {
+      .then((info: any) => {
         console.log(info);
         return info;
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
         return error;
       });
   };
-  const createIcon = async (option = {}) => {
+  type CreateIconOption = {
+    trim?: boolean;
+    square?: boolean;
+    transparent?: boolean;
+    extend?: number;
+    size?: number;
+    name?: string;
+    background?: string;
+  };
+  const createIcon = async (option: CreateIconOption = {}) => {
     const iconImage = image.clone();
     const defaultOption = {
       trim: true,
       square: true,
+      transparent: false,
       extend: 0.05,
       size: 128,
       name: "scripts/icon",
@@ -240,7 +277,7 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
     if (baseOption.trim) {
       iconImage.trim(50);
     }
-    await iconImage.metadata().then(function (metadata) {
+    await iconImage.metadata().then(function (metadata: any) {
       originMeta = { ...metadata };
       switch (metadata.format) {
         case "jpeg":
@@ -276,17 +313,19 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
         });
       }
     });
-    iconImage.raw().toBuffer((err, data, info) => {
+    iconImage.raw().toBuffer((err: any, data: any, info: any) => {
       const length = data.length;
       const min = 0.7;
-      for (let i = 3; i < length; i += 4)
-        if (
-          data[i - 1] >= Math.floor(data[2] * min) &&
-          data[i - 2] >= Math.floor(data[1] * min) &&
-          data[i - 3] >= Math.floor(data[0] * min)
-        ) {
-          data[i] = 0 * 255;
-        }
+      if(baseOption.transparent){
+        for (let i = 3; i < length; i += 4)
+          if (
+            data[i - 1] >= Math.floor(data[2] * min) &&
+            data[i - 2] >= Math.floor(data[1] * min) &&
+            data[i - 3] >= Math.floor(data[0] * min)
+          ) {
+            data[i] = 0 * 255;
+          }
+      }
       if (baseOption.size > 0) {
         sharp(data, {
           raw: { width: info.width, height: info.height, channels: 4 },
