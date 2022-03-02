@@ -273,6 +273,14 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
       background: "#ffffff",
     };
     const baseOption = { ...defaultOption, ...option };
+    const hex2rgb = ( hex: string ) => {
+      if ( hex.slice(0, 1) == "#" ) hex = hex.slice(1) ;
+      if ( hex.length == 3 ) hex = hex.slice(0,1) + hex.slice(0,1) + hex.slice(1,2) + hex.slice(1,2) + hex.slice(2,3) + hex.slice(2,3) ;
+    
+      return [ hex.slice( 0, 2 ), hex.slice( 2, 4 ), hex.slice( 4, 6 ) ].map( function ( str ) {
+        return parseInt( str, 16 ) ;
+      } ) ;
+    }
     let originMeta = null;
     if (baseOption.trim) {
       iconImage.trim(50);
@@ -313,6 +321,7 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
         });
       }
     });
+    const bgRGB = hex2rgb(baseOption.background || "#ffffff");
     iconImage.raw().toBuffer((err: any, data: any, info: any) => {
       const length = data.length;
       const min = 0.7;
@@ -324,6 +333,16 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
             data[i - 3] >= Math.floor(data[0] * min)
           ) {
             data[i] = 0 * 255;
+          }
+      } else {
+        for (let i = 3; i < length; i += 4)
+          if (
+            data[i] === 0
+          ) {
+            data[i] = 1 * 255;
+            data[i - 1] = bgRGB[2];
+            data[i - 2] = bgRGB[1];
+            data[i - 3] = bgRGB[0];
           }
       }
       if (baseOption.size > 0) {
