@@ -2,7 +2,7 @@
 const fs = require("fs");
 
 try {
-  const filePath1 = require("path").resolve("public/ext-config.json");
+  const filePath1 = require("path").path.resolve(__dirname, '../public/ext-config.json')
   const filePath2 = "ext-config.json";
 
   if (fs.existsSync(filePath1)) {
