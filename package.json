@@ -1,6 +1,6 @@
 {
   "name": "chrome_extension_maker_tools",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.js",
@@ -13,7 +13,8 @@
     "ext-zip": "dist/scripts/option/zip.js",
     "ext-icon": "dist/scripts/option/makeicon.js",
     "ext-icon-transparent": "dist/scripts/option/makeicon_transparent.js",
-    "ext-screenshot": "dist/scripts/option/makescreenshot.js"
+    "ext-screenshot": "dist/scripts/option/makescreenshot.js",
+    "ext-test": "dist/base.js"
   },
   "private": true,
   "license": "MIT",
