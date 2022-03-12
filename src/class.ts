@@ -289,7 +289,7 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
           break
         case "none":
         case "equal":
-          iconImage.trim(0);
+          iconImage.trim();
           break
       }
 

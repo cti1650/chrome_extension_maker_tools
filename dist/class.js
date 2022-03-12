@@ -250,7 +250,7 @@ const MakeExtentionImage = async (file = "scripts/icon.png", option = {}) => {
                     break;
                 case "none":
                 case "equal":
-                    iconImage.trim(0);
+                    iconImage.trim();
                     break;
             }
         }
