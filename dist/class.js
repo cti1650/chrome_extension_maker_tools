@@ -244,7 +244,15 @@ const MakeExtentionImage = async (file = "scripts/icon.png", option = {}) => {
         };
         let originMeta = null;
         if (baseOption.trim) {
-            iconImage.trim(50);
+            switch (baseOption.transparent) {
+                case "near":
+                    iconImage.trim(50);
+                    break;
+                case "none":
+                case "equal":
+                    iconImage.trim(0);
+                    break;
+            }
         }
         await iconImage.metadata().then(function (metadata) {
             originMeta = { ...metadata };

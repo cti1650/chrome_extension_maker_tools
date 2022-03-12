@@ -283,7 +283,16 @@ export const MakeExtentionImage: MakeExtentionImageType = async (
     }
     let originMeta = null;
     if (baseOption.trim) {
-      iconImage.trim(50);
+      switch(baseOption.transparent){
+        case "near":
+          iconImage.trim(50);
+          break
+        case "none":
+        case "equal":
+          iconImage.trim(0);
+          break
+      }
+
     }
     await iconImage.metadata().then(function (metadata: any) {
       originMeta = { ...metadata };
