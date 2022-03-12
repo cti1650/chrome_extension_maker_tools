@@ -226,7 +226,7 @@ const MakeExtentionImage = async (file = "scripts/icon.png", option = {}) => {
         const defaultOption = {
             trim: true,
             square: true,
-            transparent: false,
+            transparent: "near",
             extend: 0.05,
             size: 128,
             name: "scripts/icon",
@@ -286,22 +286,31 @@ const MakeExtentionImage = async (file = "scripts/icon.png", option = {}) => {
         iconImage.raw().toBuffer((err, data, info) => {
             const length = data.length;
             const min = 0.7;
-            if (baseOption.transparent) {
-                for (let i = 3; i < length; i += 4)
-                    if (data[i - 1] >= Math.floor(data[2] * min) &&
-                        data[i - 2] >= Math.floor(data[1] * min) &&
-                        data[i - 3] >= Math.floor(data[0] * min)) {
-                        data[i] = 0 * 255;
-                    }
-            }
-            else {
-                for (let i = 3; i < length; i += 4)
-                    if (data[i] === 0) {
-                        data[i] = 1 * 255;
-                        data[i - 1] = bgRGB[2];
-                        data[i - 2] = bgRGB[1];
-                        data[i - 3] = bgRGB[0];
-                    }
+            switch (baseOption.transparent) {
+                case "near":
+                    for (let i = 3; i < length; i += 4)
+                        if (data[i - 1] >= Math.floor(data[2] * min) &&
+                            data[i - 2] >= Math.floor(data[1] * min) &&
+                            data[i - 3] >= Math.floor(data[0] * min)) {
+                            data[i] = 0 * 255;
+                        }
+                    break;
+                case "none":
+                    for (let i = 3; i < length; i += 4)
+                        if (data[i] === 0) {
+                            data[i] = 1 * 255;
+                            data[i - 1] = bgRGB[2];
+                            data[i - 2] = bgRGB[1];
+                            data[i - 3] = bgRGB[0];
+                        }
+                    break;
+                case "equal":
+                    for (let i = 3; i < length; i += 4)
+                        if (data[i - 1] === data[2] &&
+                            data[i - 2] === data[1] &&
+                            data[i - 3] === data[0]) {
+                            data[i] = 0 * 255;
+                        }
             }
             if (baseOption.size > 0) {
                 sharp(data, {

@@ -1,12 +1,33 @@
 #!/usr/bin/env node
 import { MakeExtentionImage } from "../../class";
 import { Manifest } from "../../class";
+
+let mode = "near"
+
+for(var i = 0;i < process.argv.length; i++){
+    switch(process.argv[i]) {
+        case "--equal":
+        case "--eq":
+            mode = "equal"
+            break
+        case "--near":
+        case "--ne":
+            mode = "near"
+            break
+        case "--none":
+        case "--no":
+            mode = "none"
+            break
+        default:
+    }
+}
+
 MakeExtentionImage('extensions/icons/icon.png').then(({createIcons})=>{
     const sizeList = [128, 64, 32];
     createIcons({
         name: 'extensions/icons/icon',
         sizeList: sizeList,
-        transparent: true
+        transparent: mode
     });
     const { manifest, save, update } = Manifest();
     sizeList.map((size) => {

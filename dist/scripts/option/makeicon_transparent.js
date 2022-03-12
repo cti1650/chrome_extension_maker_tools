@@ -3,12 +3,30 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_1 = require("../../class");
 const class_2 = require("../../class");
+let mode = "near";
+for (var i = 0; i < process.argv.length; i++) {
+    switch (process.argv[i]) {
+        case "--equal":
+        case "--eq":
+            mode = "equal";
+            break;
+        case "--near":
+        case "--ne":
+            mode = "near";
+            break;
+        case "--none":
+        case "--no":
+            mode = "none";
+            break;
+        default:
+    }
+}
 (0, class_1.MakeExtentionImage)('extensions/icons/icon.png').then(({ createIcons }) => {
     const sizeList = [128, 64, 32];
     createIcons({
         name: 'extensions/icons/icon',
         sizeList: sizeList,
-        transparent: true
+        transparent: mode
     });
     const { manifest, save, update } = (0, class_2.Manifest)();
     sizeList.map((size) => {

@@ -60,6 +60,15 @@ extensions ディレクトリ配下のChrome拡張機能用ファイルに対し
         yarn ext-icon-transparent
         ```
 
+        |オプション|動作
+        |:-:|:-:|
+        |--equal|背景色と同色を透過|
+        |--eq|背景色と同色を透過|
+        |--near|背景色に近い色を透過|
+        |--ne|背景色に近い色を透過|
+        |--none|透過無効化|
+        |--no|透過無効化|
+
     - スクリーンショット 画像サイズ変更
         ```
         yarn ext-screenshot
