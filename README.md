@@ -96,3 +96,8 @@ extensions ディレクトリ配下のChrome拡張機能用ファイルに対し
 - [chrome.pageAction - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/pageAction/)  
 
 - [chrome.browserAction - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/browserAction/)  
+
+- [Manifest file format V2 - Chrome Developers 現在非推奨](https://developer.chrome.com/docs/extensions/mv2/manifest/)  
+
+- [Manifest file format V3 - Chrome Developers](https://developer.chrome.com/docs/extensions/mv3/manifest/)  
+
