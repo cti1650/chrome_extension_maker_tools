@@ -79,9 +79,20 @@ extensions ディレクトリ配下のChrome拡張機能用ファイルに対し
         yarn ext-zip
         ```
 
+## 参考
+
 - [TypeScriptで自分用のライブラリを作ってローカル/GitHubからnpm installする - Qiita](https://qiita.com/asylum/items/9a4a60aa5cf54bc8acab)  
 
 - [本当にやさしいnpmライブラリ開発入門 - Qiita](https://qiita.com/saltyshiomix/items/0306e17cde8f2475f193)  
 
 - [自作パッケージの実行ファイルをnpm installした際にnode_modules/.bin/に登録する - Qiita](https://qiita.com/103ma2/items/02709e55bf7cd99588c1)  
 
+- [chrome extensionsで使うアイコンのサイズ整理 - tweeeetyのぶろぐ的めも](https://www.tweeeety.blog/entry/20131031/1383218652)  
+
+- [Manifest - Icons - Chrome Developers](https://developer.chrome.com/docs/extensions/mv3/manifest/icons/)  
+
+- [chrome.action - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/action/)  
+
+- [chrome.pageAction - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/pageAction/)  
+
+- [chrome.browserAction - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/browserAction/)  
