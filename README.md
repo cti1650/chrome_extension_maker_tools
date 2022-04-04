@@ -15,7 +15,7 @@ extensions ディレクトリ配下のChrome拡張機能用ファイルに対し
 
 - インストール
     ```
-    yarn add https://github.com/cti1650/chrome_extension_maker_tools
+    yarn add -D https://github.com/cti1650/chrome_extension_maker_tools
     ```
 
 - アップデート
