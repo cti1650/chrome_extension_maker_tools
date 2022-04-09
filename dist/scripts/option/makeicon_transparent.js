@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_1 = require("../../class");
 const class_2 = require("../../class");
-let mode = "near";
+let mode = "equal";
 for (var i = 0; i < process.argv.length; i++) {
     switch (process.argv[i]) {
         case "--equal":
@@ -21,36 +21,52 @@ for (var i = 0; i < process.argv.length; i++) {
         default:
     }
 }
-(0, class_1.MakeExtentionImage)('extensions/icons/icon.png').then(({ createIcons }) => {
-    const sizeList = [128, 64, 32];
+(0, class_1.MakeExtentionImage)("extensions/icons/icon.png").then(({ createIcons }) => {
+    const sizeList = [128, 48, 32, 24, 16];
     createIcons({
-        name: 'extensions/icons/icon',
+        name: "extensions/icons/icon",
         sizeList: sizeList,
-        transparent: mode
+        transparent: mode,
     });
     const { manifest, save, update } = (0, class_2.Manifest)();
     sizeList.map((size) => {
         switch (manifest.manifest_version) {
             case 2:
-                if (manifest.browser_action) {
-                    if (!manifest.browser_action.default_icon)
-                        manifest.browser_action.default_icon = {};
-                    manifest.browser_action.default_icon[size.toString()] =
-                        'icons/icon_' + size.toString() + '.png';
+                if (~[16, 24, 32].indexOf(size)) {
+                    if (manifest.browser_action) {
+                        if (!manifest.browser_action.default_icon)
+                            manifest.browser_action.default_icon = {};
+                        manifest.browser_action.default_icon[size.toString()] =
+                            "icons/icon_" + size.toString() + ".png";
+                    }
+                    if (manifest.page_action) {
+                        if (!manifest.page_action.default_icon)
+                            manifest.page_action.default_icon = {};
+                        manifest.page_action.default_icon[size.toString()] =
+                            "icons/icon_" + size.toString() + ".png";
+                    }
                 }
-                if (manifest.page_action) {
-                    if (!manifest.page_action.default_icon)
-                        manifest.page_action.default_icon = {};
-                    manifest.page_action.default_icon[size.toString()] =
-                        'icons/icon_' + size.toString() + '.png';
+                if (~[16, 48, 128].indexOf(size)) {
+                    if (!manifest.icons)
+                        manifest.icons = {};
+                    manifest.icons[size.toString()] =
+                        "icons/icon_" + size.toString() + ".png";
                 }
                 break;
             case 3:
-                if (manifest.action) {
-                    if (!manifest.action.default_icon)
-                        manifest.action.default_icon = {};
-                    manifest.action.default_icon[size.toString()] =
-                        'icons/icon_' + size.toString() + '.png';
+                if (~[16, 24, 32].indexOf(size)) {
+                    if (manifest.action) {
+                        if (!manifest.action.default_icon)
+                            manifest.action.default_icon = {};
+                        manifest.action.default_icon[size.toString()] =
+                            "icons/icon_" + size.toString() + ".png";
+                    }
+                }
+                if (~[16, 48, 128].indexOf(size)) {
+                    if (!manifest.icons)
+                        manifest.icons = {};
+                    manifest.icons[size.toString()] =
+                        "icons/icon_" + size.toString() + ".png";
                 }
                 break;
         }
