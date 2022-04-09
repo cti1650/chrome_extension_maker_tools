@@ -17,6 +17,10 @@
     "ext-test": "dist/base.js",
     "ext-init": "dist/init.js"
   },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
   "private": true,
   "license": "MIT",
   "dependencies": {
